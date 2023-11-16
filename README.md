@@ -36,4 +36,6 @@ We we able to achieve an F1 Score of 0.7.
 
 We presented our solution at the Langara Research Symposium 2023 and won the first prize. Our model was finally selected by the college authorities to submit to BC government.
 
+Note : I have not uploaded the best weights and dataset on github due to their heavy size. If you want the best trained models along with dataset check it out here - https://drive.google.com/drive/folders/17vJ72aru4Ba82HT6eHapGAR6LiOIOA5o
+
 
