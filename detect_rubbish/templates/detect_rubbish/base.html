@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Image</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'detect_rubbish/main.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center">Garbage Detection</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="image" style="color:azure">Select Image:</label>
+                    <input type="file" class="form-control-file" name="image" id="image" accept="image/*">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" name="yolo_v3" value="yolo_v3" formaction="{% url 'detect_objects' %}">Run YOLOv3</button>
+                    <button type="submit" class="btn btn-primary" name="yolo_v7" value="yolo_v7" formaction="{% url 'detect_objects' %}">Run YOLOv7</button>
+                    <button type="submit" class="btn btn-primary" name="yolo_v8" value="yolo_v8" formaction="{% url 'detect_objects' %}">Run YOLOv8</button>
+                </div>
+            </form>
+
+            {% if result_image %}
+            <h2 class="text-center" style="color:azure">Processed Image:</h2>
+            <div class="text-center">
+                <img src="{{ result_image }}" alt="Uploaded Image" class="img-responsive">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNSG+p"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
